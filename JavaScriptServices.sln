@@ -50,6 +50,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Aurelia", "templates\Aureli
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "KnockoutSpa", "templates\KnockoutSpa\KnockoutSpa.xproj", "{85231B41-6998-49AE-ABD2-5124C83DBEF2}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.AspNetCore.NodeServices.Sockets", "src\Microsoft.AspNetCore.NodeServices.Sockets\Microsoft.AspNetCore.NodeServices.Sockets.xproj", "{05F5AA92-E245-490E-92CA-F7CA25FF2A86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -120,6 +122,10 @@ Global
 		{85231B41-6998-49AE-ABD2-5124C83DBEF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85231B41-6998-49AE-ABD2-5124C83DBEF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85231B41-6998-49AE-ABD2-5124C83DBEF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05F5AA92-E245-490E-92CA-F7CA25FF2A86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05F5AA92-E245-490E-92CA-F7CA25FF2A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05F5AA92-E245-490E-92CA-F7CA25FF2A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05F5AA92-E245-490E-92CA-F7CA25FF2A86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
