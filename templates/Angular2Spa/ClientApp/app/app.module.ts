@@ -1,11 +1,9 @@
-import { StoriesAuthService } from './shared/storiesAuth.service';
+import { LocalStorage } from './shared/other/localStorage';
+import { StoriesAuthService } from './shared/services/storiesAuth.service';
+import { StoriesService } from './shared/services/stories.service';
+import { AccountService } from './shared/services/account.service';
 import { StoriesAuthComponent } from './components/storiesAuth/storiesAuth.component';
-import { StoriesService } from './shared/stories.service';
 import { StoriesWithoutLoginComponent } from './components/storiesWithoutLogin/storiesWithoutLogin.component';
-import { ExploreDefinitionsComponent } from './components/exploreDefinitions/exploreDefinitions.component';
-import { DefinitionsService } from './shared/definitions.service';
-import { WordsService } from './shared/words.service';
-import { ExploreWordsComponent } from './components/exploreWords/exploreWords.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { UniversalModule, isBrowser, isNode } from 'angular2-universal';
@@ -14,11 +12,8 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { DatabaseComponent } from './components/database/database.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { AccountService } from './shared/account.service';
-import { LocalStorage } from './shared/localStorage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -52,8 +47,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ],
     providers: [
         AccountService,
-        WordsService,
-        DefinitionsService,
         StoriesService,
         StoriesAuthService,
         { provide: LocalStorage, useValue: (isBrowser) ? window.localStorage : { getItem() { } } }

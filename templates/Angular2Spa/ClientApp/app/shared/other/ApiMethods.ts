@@ -1,5 +1,5 @@
+import { AccountService } from './../services/account.service';
 import { Observable } from 'rxjs/Observable';
-import { AccountService } from './../account.service';
 import { Response, Headers } from '@angular/http';
 export class ApiMethods {
 

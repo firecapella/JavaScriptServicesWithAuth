@@ -1,6 +1,6 @@
+import { AccountService } from './../../shared/services/account.service';
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router'; // ROUTER_DIRECTIVES, 
-import { AccountService } from '../../shared/account.service';
 
 class LoginModel {
     email: string;

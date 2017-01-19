@@ -1,5 +1,5 @@
+import { StoriesAuthService } from './../../shared/services/storiesAuth.service';
 import { Observable } from 'rxjs/Observable';
-import { StoriesAuthService } from './../../shared/storiesAuth.service';
 import { Story } from './../../shared/models/Story';
 import { Http } from '@angular/http';
 import { Component, OnInit } from '@angular/core';

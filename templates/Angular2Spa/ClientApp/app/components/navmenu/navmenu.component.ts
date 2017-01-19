@@ -1,5 +1,5 @@
+import { AccountService } from './../../shared/services/account.service';
 import { Component } from '@angular/core';
-import { AccountService } from '../../shared/account.service';
 
 @Component({
     selector: 'nav-menu',

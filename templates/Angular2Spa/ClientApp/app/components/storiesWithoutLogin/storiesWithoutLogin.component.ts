@@ -1,4 +1,4 @@
-import { StoriesService } from './../../shared/stories.service';
+import { StoriesService } from './../../shared/services/stories.service';
 import { Story } from './../../shared/models/Story';
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';

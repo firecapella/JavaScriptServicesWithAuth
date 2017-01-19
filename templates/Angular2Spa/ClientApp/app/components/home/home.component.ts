@@ -1,5 +1,5 @@
+import { LocalStorage } from './../../shared/other/localStorage';
 import { Component, Inject } from '@angular/core';
-import { LocalStorage } from '../../shared/localStorage';
 
 @Component({
     selector: 'home',

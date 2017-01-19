@@ -1,6 +1,6 @@
+import { LocalStorage } from './../other/localStorage';
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { LocalStorage } from './localStorage';
 
 import { Observable } from 'rxjs/Observable';
 

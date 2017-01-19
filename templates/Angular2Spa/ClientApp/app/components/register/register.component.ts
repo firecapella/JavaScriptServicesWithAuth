@@ -1,3 +1,4 @@
+import { AccountService } from './../../shared/services/account.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'; //ROUTER_DIRECTIVES, RouterModule 
 import {
@@ -10,7 +11,6 @@ import {
     Validators,
     AbstractControl
 } from '@angular/forms';
-import { AccountService } from '../../shared/account.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
