@@ -8,7 +8,7 @@ using Angular2Spa.Models;
 namespace Angular2Spa.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170118203052_FirstMigration")]
+    [Migration("20170119115253_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,9 +67,9 @@ namespace Angular2Spa.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Angular2Spa.Models.SamplePrivateData", b =>
+            modelBuilder.Entity("Angular2Spa.Models.Story", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("StoryId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("content");
@@ -78,9 +78,9 @@ namespace Angular2Spa.Migrations
 
                     b.Property<DateTime>("timeOfAdding");
 
-                    b.HasKey("ID");
+                    b.HasKey("StoryId");
 
-                    b.ToTable("SPDs");
+                    b.ToTable("Stories");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>

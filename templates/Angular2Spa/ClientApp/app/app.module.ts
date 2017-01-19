@@ -1,3 +1,7 @@
+import { StoriesAuthService } from './shared/storiesAuth.service';
+import { StoriesAuthComponent } from './components/storiesAuth/storiesAuth.component';
+import { StoriesService } from './shared/stories.service';
+import { StoriesWithoutLoginComponent } from './components/storiesWithoutLogin/storiesWithoutLogin.component';
 import { ExploreDefinitionsComponent } from './components/exploreDefinitions/exploreDefinitions.component';
 import { DefinitionsService } from './shared/definitions.service';
 import { WordsService } from './shared/words.service';
@@ -25,11 +29,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        DatabaseComponent,
+        StoriesWithoutLoginComponent,
+        StoriesAuthComponent,
         LoginComponent,
-        RegisterComponent,
-        ExploreWordsComponent,
-        ExploreDefinitionsComponent
+        RegisterComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -38,11 +41,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
-            { path: 'database', component: DatabaseComponent },
+            { path: 'storiesWithoutLogin', component: StoriesWithoutLoginComponent },
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
-            { path: 'exploreWords', component: ExploreWordsComponent },
-            { path: 'exploreDefinitions/:id', component: ExploreDefinitionsComponent },
+            { path: 'storiesAuth', component: StoriesAuthComponent },
             { path: '**', redirectTo: 'home' }
         ]),
         FormsModule,
@@ -52,6 +54,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         AccountService,
         WordsService,
         DefinitionsService,
+        StoriesService,
+        StoriesAuthService,
         { provide: LocalStorage, useValue: (isBrowser) ? window.localStorage : { getItem() { } } }
     ]
 })

@@ -1,0 +1,29 @@
+<h2>Stories</h2>
+
+<p>Here you can see data stored in EntityFramework database:</p>
+
+<table class='table'>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Content</th>
+			<th>TimeOfAdding</th>
+			<th>NumberOfViews</th>
+    </tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let story of stories">
+			<td>{{story.storyId}}</td>
+			<td>{{story.content}}</td>
+			<td>{{story.timeOfAdding}}</td>
+			<td>{{story.numberOfViews}}</td>
+			<td><button (click)="delete(story.id)">X</button></td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>New story:</h4>
+<input #newStoryContent />
+<button (click)="addNewData(newStoryContent.value); newStoryContent.value=''">
+        Add story
+    </button>

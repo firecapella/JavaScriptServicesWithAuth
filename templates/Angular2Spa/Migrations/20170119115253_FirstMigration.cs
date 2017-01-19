@@ -35,10 +35,10 @@ namespace Angular2Spa.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SPDs",
+                name: "Stories",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    StoryId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     content = table.Column<string>(nullable: true),
                     numberOfViews = table.Column<int>(nullable: false),
@@ -46,7 +46,7 @@ namespace Angular2Spa.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SPDs", x => x.ID);
+                    table.PrimaryKey("PK_Stories", x => x.StoryId);
                 });
 
             migrationBuilder.CreateTable(
@@ -287,7 +287,7 @@ namespace Angular2Spa.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "SPDs");
+                name: "Stories");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");

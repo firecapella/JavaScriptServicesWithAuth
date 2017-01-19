@@ -18,6 +18,6 @@ namespace Angular2Spa.Models {
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<SamplePrivateData> SPDs { get; set; }
+        public DbSet<Story> Stories { get; set; }
     }
 }

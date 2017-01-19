@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Angular2Spa.Models
 {
-    public class SamplePrivateData
+    public class Story
     {
-        public int ID { get; set; }
+        public int StoryId { get; set; }
         public string content { get; set; }
         public DateTime timeOfAdding { get; set; }
         public int numberOfViews { get; set; }
