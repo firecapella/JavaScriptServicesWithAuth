@@ -128,36 +128,70 @@ namespace Angular2Spa.Controllers
                 "The OpenIddict binder for ASP.NET Core MVC is not registered. " +
                 "Make sure services.AddOpenIddict().AddMvcBinders() is correctly called.");
 
-            if (request.IsAuthorizationCodeGrantType())
+            if (request.IsPasswordGrantType())
             {
-                // Retrieve the claims principal stored in the authorization code.
-                var info = await HttpContext.Authentication.GetAuthenticateInfoAsync(
-                    OpenIdConnectServerDefaults.AuthenticationScheme);
-
-                // Retrieve the user profile corresponding to the authorization code.
-                var user = await _userManager.GetUserAsync(info.Principal);
+                var user = await _userManager.FindByNameAsync(request.Username);
                 if (user == null)
                 {
                     return BadRequest(new OpenIdConnectResponse
                     {
                         Error = OpenIdConnectConstants.Errors.InvalidGrant,
-                        ErrorDescription = "The authorization code is no longer valid."
+                        ErrorDescription = "The username/password couple is invalid."
                     });
                 }
 
-                // Ensure the user is still allowed to sign in.
+                // Ensure the user is allowed to sign in.
                 if (!await _signInManager.CanSignInAsync(user))
                 {
                     return BadRequest(new OpenIdConnectResponse
                     {
                         Error = OpenIdConnectConstants.Errors.InvalidGrant,
-                        ErrorDescription = "The user is no longer allowed to sign in."
+                        ErrorDescription = "The specified user is not allowed to sign in."
                     });
                 }
 
-                // Create a new authentication ticket, but reuse the properties stored
-                // in the authorization code, including the scopes originally granted.
-                var ticket = await CreateTicketAsync(request, user, info.Properties);
+                // Reject the token request if two-factor authentication has been enabled by the user.
+                if (_userManager.SupportsUserTwoFactor && await _userManager.GetTwoFactorEnabledAsync(user))
+                {
+                    return BadRequest(new OpenIdConnectResponse
+                    {
+                        Error = OpenIdConnectConstants.Errors.InvalidGrant,
+                        ErrorDescription = "The specified user is not allowed to sign in."
+                    });
+                }
+
+                // Ensure the user is not already locked out.
+                if (_userManager.SupportsUserLockout && await _userManager.IsLockedOutAsync(user))
+                {
+                    return BadRequest(new OpenIdConnectResponse
+                    {
+                        Error = OpenIdConnectConstants.Errors.InvalidGrant,
+                        ErrorDescription = "The username/password couple is invalid."
+                    });
+                }
+
+                // Ensure the password is valid.
+                if (!await _userManager.CheckPasswordAsync(user, request.Password))
+                {
+                    if (_userManager.SupportsUserLockout)
+                    {
+                        await _userManager.AccessFailedAsync(user);
+                    }
+
+                    return BadRequest(new OpenIdConnectResponse
+                    {
+                        Error = OpenIdConnectConstants.Errors.InvalidGrant,
+                        ErrorDescription = "The username/password couple is invalid."
+                    });
+                }
+
+                if (_userManager.SupportsUserLockout)
+                {
+                    await _userManager.ResetAccessFailedCountAsync(user);
+                }
+
+                // Create a new authentication ticket.
+                var ticket = await CreateTicketAsync(request, user);
 
                 return SignIn(ticket.Principal, ticket.Properties, ticket.AuthenticationScheme);
             }
