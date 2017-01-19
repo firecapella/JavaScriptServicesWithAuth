@@ -1,0 +1,28 @@
+Words from database:
+
+<table class='table'>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>WhenCreated</th>
+			<th>Author</th>
+    </tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let word of words">
+			<td>{{word.id}}</td>
+			<td>{{word.title}}</td>
+			<td>{{word.whenCreated}}</td>
+			<td>{{word.author}}</td>
+			<td>{{word.authorName}}</td>
+			<td><button (click)="delete(word.id)">X</button></td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>New word:</h4>
+<input #newWordTitle />
+<button (click)="addNewData(newWordTitle.value); newWordTitle.value=''">
+        Add word
+    </button>
